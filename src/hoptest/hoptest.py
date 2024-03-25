@@ -280,6 +280,7 @@ def main():
         print("-" * 10)
     print("Summary")
     print(f"Passed {len(checks)-len(errs)} out of {len(checks)} checks")
+    return int(bool(errs))
 
 
 if __name__ == "__main__":
