@@ -150,7 +150,7 @@ def check_commit_messages(config: HoptestConfig) -> None:
     # TODO debug log commit message if failure
     for _ in range(COMMIT_MESSAGE_CHECK_RANGE):
         msg = subprocess.check_output(
-            ["git", "log", "--format=%B", "--max-count=1", TRUNK_BRANCH],
+            ["git", "log", "--format=%B", "--max-count=1", config.main_git_branch],
             encoding="utf-8",
         )
         if not commit_message_format(msg):

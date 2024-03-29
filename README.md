@@ -15,7 +15,7 @@ You can install as a precommit hook:
 # .pre-commit-hooks.yaml
 repos:
 -   repo: https://github.com/hopservices/the-hop-test
-    rev: 0.1.1
+    rev: v0.1.2
     hooks:
     -   id: the-hop-test
 ```
