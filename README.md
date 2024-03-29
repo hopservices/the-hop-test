@@ -14,18 +14,16 @@ You can install as a precommit hook:
 ```yaml
 # .pre-commit-hooks.yaml
 repos:
--   repo: git+ssh://git@github.com/hopservices/the-hop-test
-    rev: mast
+-   repo: https://github.com/hopservices/the-hop-test
+    rev: 0.1.1
     hooks:
     -   id: the-hop-test
 ```
 
-**Soon**: you can install without ssh keys to the private git repository.
-
-**Soon**: you can install from pypi as
+You can install with pip from PyPI:
 
 ```shell
-pip install hoptest
+pip install the-hop-test
 ```
 
 ## Usage
@@ -61,5 +59,5 @@ To build and publish to PyPI, run the following
 
 ```shell
 rye build
-rye publish
+rye publish --skip-existing
 ```

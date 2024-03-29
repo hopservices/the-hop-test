@@ -19,7 +19,11 @@ installed on your system, either in your python virtual environment or globally.
 from __future__ import annotations
 import os
 import subprocess
-import tomllib  # python >= 3.11
+
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
 import argparse
 from dataclasses import dataclass, field
 from typing import List, Optional

@@ -9,7 +9,7 @@
 
 -e file:.
 bandit==1.7.8
-    # via hoptest
+    # via the-hop-test
 cfgv==3.4.0
     # via pre-commit
 colorama==0.4.6
@@ -46,10 +46,10 @@ pyyaml==6.0.1
     # via bandit
     # via pre-commit
 radon==6.0.1
-    # via hoptest
+    # via the-hop-test
 rich==13.7.1
     # via bandit
-    # via hoptest
+    # via the-hop-test
 setuptools==69.2.0
     # via nodeenv
 six==1.16.0
