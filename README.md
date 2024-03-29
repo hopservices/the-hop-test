@@ -54,3 +54,12 @@ license_file = "custom-license.txt"
 main_git_branch = "trunk"
 skip_checks = ["logging"]
 ```
+
+## Development
+
+To build and publish to PyPI, run the following
+
+```shell
+rye build
+rye publish
+```
