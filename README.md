@@ -49,7 +49,6 @@ An example config file looks like
 # ./hoptest.toml
 [tool.hoptest]
 license_file = "custom-license.txt"
-main_git_branch = "trunk"
 skip_checks = ["logging"]
 ```
 

@@ -49,7 +49,6 @@ PROJECT_CONFIG_PATHS = [PYPROJECT_TOML_PATH]
 PYTEST_CONFIG_FILE = "conftest.py"
 PYTHON_TEST_FILE_PATTERNS = ["**/*test.py", "**/test_*.py"]
 SCRIPT_RUNNER_FILES = ["Makefile", "tasks.py"]
-TRUNK_BRANCH = "main"
 
 
 class CheckError(Exception):
@@ -71,7 +70,6 @@ class HoptestConfig:
 
     license_files: List[str] = field(init=False, default_factory=lambda: LICENSE_FILES)
     gitignore_file: str = GITIGNORE_FILE
-    main_git_branch: str = TRUNK_BRANCH
     script_runner_files: List[str] = field(default_factory=lambda: SCRIPT_RUNNER_FILES)
     project_config_files: List[str] = field(
         default_factory=lambda: PROJECT_CONFIG_PATHS
@@ -148,16 +146,16 @@ def check_gitignore(config: HoptestConfig) -> None:
 def check_commit_messages(config: HoptestConfig) -> None:
     """Read a few recent commit messages on the main branch and check the format"""
     # TODO debug log commit message if failure
-    for _ in range(COMMIT_MESSAGE_CHECK_RANGE):
-        msg = subprocess.check_output(
-            ["git", "log", "--format=%B", "--max-count=1", config.main_git_branch],
-            encoding="utf-8",
+    # for _ in range(COMMIT_MESSAGE_CHECK_RANGE):
+    msg = subprocess.check_output(
+        ["git", "log", "--format=%B", "--max-count=1"],
+        encoding="utf-8",
+    )
+    if not commit_message_format(msg):
+        # TODO link to format
+        raise CheckError(
+            "the commit message doesn't conform the the standard commit message format"
         )
-        if not commit_message_format(msg):
-            # TODO link to format
-            raise CheckError(
-                f"one of the previous {COMMIT_MESSAGE_CHECK_RANGE} commit messages doesn't conform the the standard commit message format"
-            )
 
 
 def check_security(config: HoptestConfig) -> None:
